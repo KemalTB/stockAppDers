@@ -5,6 +5,7 @@ Yüklü Olan Paketler
 - redux/redux toolkit
 - react-toastify
 - react-router-dom
+- yup
 
 
 PNPM KURULUMU
@@ -75,4 +76,9 @@ Default installation yazisinin altinda npm yarn ve pnpm seceneklerinden pnpm'i s
 pnpm add @mui/material @emotion/react @emotion/styled
 
 font, icon gibi kullanacagin kutuphaneleri sec ve yükle
+
+formik icin:
+pnpm add formik yup
+
+
 
