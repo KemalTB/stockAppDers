@@ -1,34 +1,64 @@
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchFail,
+  fetchStart,
+  registerSuccess,
+  loginSuccess,
+} from "../features/authSlice";
 import axios from "axios";
-import {useDispatch} from "react-redux";
-import { fetchFail, fetchStart, registerSuccess } from "../features/authSlice";
 import { useNavigate } from "react-router-dom";
-
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 const useAuthCall = () => {
-   const dispatch = useDispatch()
-   const navigate = useNavigate()
-
-   const register = async (userInfo) => {
-     dispatch(fetchStart())
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { token } = useSelector((store) => store.auth);
+  const register = async (userInfo) => {
+    dispatch(fetchStart());
     try {
-       const {data} = await axios.post("https://10002.fullstack.clarusway.com/users",userInfo) 
-       console.log(data)
-       dispatch(registerSuccess(data))
-       navigate("/stock")
+      const { data } = await axios.post(
+        "https://10002.fullstack.clarusway.com/users/",
+        userInfo
+      );
+      console.log("register", data);
+      dispatch(registerSuccess(data));
+      navigate("/stock");
     } catch (error) {
-        dispatch(fetchFail())
+      dispatch(fetchFail());
     }
-   } 
-   const login = async (userInfo) => {
-    dispatch(fetchStart())
-   try {
+  };
+  const login = async (userInfo) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axios.post(
+        `https://10002.fullstack.clarusway.com/auth/login/`,
+        userInfo
+      );
+      dispatch(loginSuccess(data));
+      toastSuccessNotify("Login performed");
+      navigate("/stock");
+      console.log(data);
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+      toastErrorNotify("Login can not be performed");
+    }
+  };
 
-   } catch (error) {
-       dispatch(fetchFail())
-   }
-  }
+  const logout = async () => {
+    dispatch(fetchStart());
+    try {
+      toastSuccessNotify("Logout performed");
+      navigate("/");
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+      toastErrorNotify("Logout can not be performed");
+    }
+  };
 
-   return {register,login}
-}
+  return { register, login , logout };
+};
 
 export default useAuthCall;
 
