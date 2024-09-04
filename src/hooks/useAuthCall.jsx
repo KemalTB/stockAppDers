@@ -5,6 +5,7 @@ import {
   fetchStart,
   registerSuccess,
   loginSuccess,
+  logoutSuccess
 } from "../features/authSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -48,6 +49,12 @@ const useAuthCall = () => {
   const logout = async () => {
     dispatch(fetchStart());
     try {
+      await axios("https://10002.fullstack.clarusway.com/auth/logout/",{
+        headers:{
+          Authorization: `Token ${token}`
+        }
+      })
+      dispatch(logoutSuccess())
       toastSuccessNotify("Logout performed");
       navigate("/");
     } catch (error) {
@@ -70,3 +77,4 @@ export default useAuthCall;
 //* custom hookslar parametre alabilirler.
 //? birden fazla değer veya fonksiyon paylaşabiliriz. Eğer tek bir değer veya fonskiyon paylaşacaksak return deger dememiz yeterli. Ama birden fazlaysa o zaman object içerisinde değerlerimi, fonksiyonlarımı paylaşabilirim.
 //? Tek değer paylaştığımızda kullancağımız componentte direk olarka çağırabiliriz. Ama birden fazla değer paylaşıyorsak kullanırken destructuring yapmalıyız.
+
