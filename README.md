@@ -22,12 +22,13 @@ kurulum basarili olmusmuyu kontrol icin:
 pnpm -v
 
 yukaridaki paketleri hem windows hemde mac icin asagidaki gibi pratik bir sekilde yükleyebiliriz
-
-pnpm add @emotion/react @emotion/styled @mui/icons-material @mui/material @reduxjs/toolkit axios formik react react-dom react-redux react-router-dom react-toastify redux-persist yup
+///////////////////////////////////////////////////////
+pnpm add @emotion/react @emotion/styled @mui/x-data-grid@latest
+ @mui/icons-material@latest @mui/material@latest @reduxjs/toolkit axios formik react react-dom react-redux react-router-dom react-toastify redux-persist yup
 
 pnpm add -D @types/react @types/react-dom @vitejs/plugin-react vite
 
-
+///////////////////////////////////////////////////////////
 
 Scripts
 dev: "vite"
@@ -46,6 +47,17 @@ Emotion, CSS-in-JS (JavaScript içinde CSS) ile stil oluşturmayı sağlar. Bu p
 
 Emotion'ın styled-components benzeri stil bileşeni sağlayan kütüphanesidir. CSS kodlarını bileşen tabanlı şekilde yazmanızı sağlar.
 @mui/icons-material:
+
+@mui/x-data-grid, Material-UI (MUI) tarafından sağlanan, büyük veri setlerini tablo formatında görüntülemek ve yönetmek için kullanılan, çok özelleştirilebilir ve özellik açısından zengin bir veri tablosu bileşenidir. Özellikle büyük veri setlerini görüntülemek, filtrelemek, sıralamak ve düzenlemek gerektiğinde oldukça kullanışlıdır.
+
+@mui/x-data-grid Özellikleri:
+Sayfalama: Büyük veri setleri için verimli sayfalama desteği.
+Sıralama ve Filtreleme: Sütun değerlerine göre sıralama ve filtreleme yapabilme.
+Seçim: Tekli veya çoklu satır seçimi.
+Düzenleme: Hücre ve satır düzenlemesi için yerinde düzenleme (inline editing) desteği.
+Sütun Yeniden Boyutlandırma ve Sıralama: Sütunları etkileşimli olarak yeniden boyutlandırma ve sıralama.
+Özel Render Desteği: Hücre, sütun ve satırlar için özel render işlemleri yapma esnekliği.
+Performans: Büyük veri setlerini verimli bir şekilde işlemek için sanallaştırma (virtualization) desteği ile yüksek performans.
 
 Material-UI'nin ikon kütüphanesidir. Google’ın Material Design ikonlarını uygulamanızda kolayca kullanmanıza olanak tanır.
 @mui/material:
