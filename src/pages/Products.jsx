@@ -8,10 +8,8 @@ import ProductModal from "../components/Modals/ProductModal";
 import ProductTable from "../components/Tables/ProductTable";
 
 const Products = () => {
-  const {
-    getStockData,
-  } = useStockCall();
-  const { products, loading } = useSelector((state) => state.stock);
+  const { getStockData, getProCatBrand } = useStockCall();
+  const { products, loading, error } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -30,9 +28,10 @@ const Products = () => {
   console.log("Products:", products);
   console.log("Products:", initialState);
   useEffect(() => {
-    getStockData("products");
-    getStockData("brands");
-    getStockData("categories");
+    // getStockData("products");
+    // getStockData("brands");
+    // getStockData("categories");
+    getProCatBrand();
   }, []);
 
   return (
@@ -45,18 +44,35 @@ const Products = () => {
       >
         Products
       </Typography>
-      <Button variant="contained" onClick={handleOpen}>
-        New Product
-      </Button>
+      {loading ? (
+        <Typography
+          align="center"
+          variant="h5"
+          component="h3"
+          color="secondary.second"
+        >
+          Loading....
+        </Typography>
+      ) : error ? (
+        <Typography align="center" variant="h5" component="h3" color="error">
+          Something went wrong...
+        </Typography>
+      ) : (
+        <>
+          <Button variant="contained" onClick={handleOpen}>
+            New Product
+          </Button>
 
-      <ProductTable />
+          <ProductTable />
 
-      {open && (
-        <ProductModal
-          open={open}
-          handleClose={handleClose}
-          initialState={initialState}
-        />
+          {open && (
+            <ProductModal
+              open={open}
+              handleClose={handleClose}
+              initialState={initialState}
+            />
+          )}
+        </>
       )}
     </Container>
   );
