@@ -24,9 +24,11 @@ pnpm -v
 yukaridaki paketleri hem windows hemde mac icin asagidaki gibi pratik bir sekilde yükleyebiliriz
 ///////////////////////////////////////////////////////
 pnpm add @emotion/react @emotion/styled @mui/x-data-grid@latest
- @mui/icons-material@latest @mui/material@latest @reduxjs/toolkit axios formik react react-dom react-redux react-router-dom react-toastify redux-persist yup
+ @mui/icons-material@latest @mui/material@latest @reduxjs/toolkit axios formik react react-dom react-redux react-router-dom react-toastify redux-persist yup @tremor/react
 
-pnpm add -D @types/react @types/react-dom @vitejs/plugin-react vite
+pnpm add -D @types/react @types/react-dom @vitejs/plugin-react vite tailwindcss postcss autoprefixer
+
+npx tailwindcss init -p
 
 ///////////////////////////////////////////////////////////
 

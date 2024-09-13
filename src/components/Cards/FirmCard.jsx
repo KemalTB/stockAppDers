@@ -8,8 +8,8 @@ import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import useStockCall from "../../hooks/useStockCall";
-
-const btnStyle = { cursor: "pointer", "&:hover": { color: "red" } };
+import { btnStyle } from "../../styles/globalStyle";
+// const btnStyle = { cursor: "pointer", "&:hover": { color: "red" } };
 
 export default function FirmCard({ _id, name, phone, address, image,handleOpen,setInitialState }) {
   const {deleteStockData} = useStockCall()
